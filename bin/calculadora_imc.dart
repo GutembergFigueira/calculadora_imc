@@ -1,5 +1,5 @@
 import 'dart:core';
-import 'dart:developer';
+
 import 'package:calculadora_imc/classes/pessoa_fisica.dart';
 import 'package:calculadora_imc/console_utils.dart' as utils;
 import 'package:calculadora_imc/calculo_imc.dart' as calc;
@@ -28,28 +28,30 @@ void main(List<String> arguments) {
   var calculoImc = calc.calculo(peso, altura);
   print("imc = $calculoImc");
 
-  if (calculoImc < 16) {
-    print("Resultado de IMC: Magreza grave");
-  }
-  if (calculoImc >= 16 && calculoImc < 17) {
-    print("Resultado de IMC: Magreza moderada");
-  }
-  if (calculoImc >= 17 && calculoImc < 18.5) {
-    print("Resultado de IMC: Magreza leve");
-  }
-  if (calculoImc >= 18.5 && calculoImc < 25) {
-    print("Resultado de IMC: Saudavel");
-  }
-  if (calculoImc >= 25 && calculoImc < 30) {
-    print("Resultado de IMC: Sobrepeso");
-  }
-  if (calculoImc >= 30 && calculoImc < 35) {
-    print("Resultado de IMC: Obesidade Grau I");
-  }
-  if (calculoImc >= 35 && calculoImc < 40) {
-    print("Resultado de IMC: Obesidade Grau II (severa)");
-  }
-  if (calculoImc >= 40) {
-    print("Resultado de IMC: Obesidade Grau III (morbida)");
+  if (calculoImc != null) {
+    if (calculoImc < 16) {
+      print("Resultado de IMC: Magreza grave");
+    }
+    if (calculoImc >= 16 && calculoImc < 17) {
+      print("Resultado de IMC: Magreza moderada");
+    }
+    if (calculoImc >= 17 && calculoImc < 18.5) {
+      print("Resultado de IMC: Magreza leve");
+    }
+    if (calculoImc >= 18.5 && calculoImc < 25) {
+      print("Resultado de IMC: Saudavel");
+    }
+    if (calculoImc >= 25 && calculoImc < 30) {
+      print("Resultado de IMC: Sobrepeso");
+    }
+    if (calculoImc >= 30 && calculoImc < 35) {
+      print("Resultado de IMC: Obesidade Grau I");
+    }
+    if (calculoImc >= 35 && calculoImc < 40) {
+      print("Resultado de IMC: Obesidade Grau II (severa)");
+    }
+    if (calculoImc >= 40) {
+      print("Resultado de IMC: Obesidade Grau III (morbida)");
+    }
   }
 }

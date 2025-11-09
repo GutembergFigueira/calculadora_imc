@@ -12,8 +12,6 @@ dynamic calculo(dynamic peso, dynamic altura) {
       var n2 = numero2;
       var n3 = pow(n2!, 2);
       var imc = n1! / n3;
-      // verificar tipo de saída.
-      print(n1.runtimeType);
 
       return imc;
     } catch (e) {
