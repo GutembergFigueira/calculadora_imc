@@ -1,90 +1,47 @@
 import 'dart:convert';
-import 'dart:ffi';
 import 'dart:io';
+import 'dart:core';
 
-// alternativa 0
-String? console(String texto) {
+String? console1(String texto) {
   print(texto);
-  bool apenasLetras(String text) {
+  var line1 = stdin.readLineSync(encoding: utf8);
+
+  print("line1 = $line1");
+
+  if (line1 != null && line1.isNotEmpty) {
     final regex = RegExp(r'^[a-zA-Z]+$');
-    return regex.hasMatch(text);
-  }
 
-  var line = stdin.readLineSync(encoding: utf8);
-  var lista = [line];
-  print("A lista e: $lista");
-
-  if (line != null && line.isNotEmpty && apenasLetras(line) == true) {
-    print("Entrada valida: $line");
-    print(apenasLetras(line));
+    if (regex.hasMatch(line1)) {
+      print("Entrada valida: ========> $line1");
+    }
+    if (regex.hasMatch(line1) == false || (line1 == "")) {
+      print("Entrada invalida");
+      return '0';
+    }
   }
-  if (line == "" || line != null && apenasLetras(line) == false) {
-    print("Entrada invalida");
-    return '0';
-  }
-  return line ?? "";
+  return line1;
 }
 
-String? consoleDouble(String texto) {
+String? console2(String texto) {
   print(texto);
-  bool apenasLetras(String text) {
+  var line2 = stdin.readLineSync(encoding: utf8);
+
+  print("line2 = $line2");
+
+  if (line2 != null && line2.isNotEmpty) {
     final regex = RegExp(r'^[a-zA-Z]+$');
-    return regex.hasMatch(text);
+
+    if (regex.hasMatch(line2) == false) {
+      print("Entrada valida:=======> $line2");
+    }
+    if (regex.hasMatch(line2) == true) {
+      print("A entrada não comeca com numero");
+      return '0';
+    }
+    if (line2 == "") {
+      print("Entrada invalida");
+      return '0';
+    }
   }
-
-  var line = stdin.readLineSync(encoding: utf8);
-  var lista = [line];
-  print("A lista e: $lista");
-
-  if (line != null && line.isNotEmpty && apenasLetras(line) == false) {
-    print("Entrada valida: $line");
-    print(apenasLetras(line));
-  }
-  if (line == "" || line != null && apenasLetras(line) == true) {
-    print("Entrada invalida");
-    return '0';
-  }
-  return line ?? "";
-} 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// String? consoleRegex(String texto) {
-//   print(texto);
-//   var line = stdin.readLineSync(encoding: utf8);
-//   if (line != null && line.isNotEmpty) {
-//     final regex = RegExp(r'^[a-zA-Z]');
-//     if (regex.hasMatch(line)) {
-//       print("Entrada valida: $line");
-//     }
-//   } else {
-//     print("Entrada invalida");
-//   }
-//   return line ?? "";
-// }
-
-
-
-
-
-
-
-// // seleciona tudo que NÃO é (^) uma letra de a-z ou A-Z
-//   RegExp regexApenasLetrasAscii = RegExp(r'[^a-zA-Z]');
-
-//  // Substitui os caracteres não-letras por uma string vazia
-//   String textoFiltradoAscii = textoOriginal.replaceAll(regexApenasLetrasAscii, '');
-
-// você pode usar a propriedade Unicode \p{Letter} ou \p{L}:
-  // RegExp regexTodasAsLetras = RegExp(r'[^\p{Letter}\s]', unicode: true);
+  return line2;
+}

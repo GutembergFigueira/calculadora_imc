@@ -11,8 +11,7 @@ class PessoaFisica extends Pessoa {
     return _cpf;
   }
 
-  PessoaFisica(String nome, double peso, double altura, String cpf)
-    : super(nome, peso, altura) {
+  PessoaFisica(super.nome, super.peso, super.altura, String cpf) {
     _cpf = cpf;
   }
 

@@ -1,21 +1,17 @@
-import 'dart:convert';
-import 'dart:io';
-import 'dart:math';
 import 'dart:core';
-import 'package:calculadora_imc/calculo_imc.dart' as input;
-import 'package:calculadora_imc/classes/pessoa_abstract.dart';
+import 'dart:developer';
 import 'package:calculadora_imc/classes/pessoa_fisica.dart';
 import 'package:calculadora_imc/console_utils.dart' as utils;
+import 'package:calculadora_imc/calculo_imc.dart' as calc;
 
 void main(List<String> arguments) {
   var pessoa1 = PessoaFisica("Joao", 50.0, 1.80, "000.000.000-00");
-
   print(pessoa1);
 
   // console_utils
-  var input1 = utils.console("Digite o nome:");
-  var input2 = utils.consoleDouble("Digite o peso:");
-  var input3 = utils.consoleDouble("Digite a altura:");
+  var input1 = utils.console1("Digite o nome:");
+  var input2 = utils.console2("Digite o peso:");
+  var input3 = utils.console2("Digite a altura:");
 
   //  Inputs lines armazenados em lista.
   var lista = {};
@@ -26,7 +22,34 @@ void main(List<String> arguments) {
 
   print("A lista_entrada: $lista");
 
-  // calcular o imc.
+  // calculo de imc.
+  var peso = lista["Peso kg"].replaceAll(',', '.');
+  var altura = lista["Altura m"].replaceAll(',', '.');
+  var calculoImc = calc.calculo(peso, altura);
+  print("imc = $calculoImc");
 
-  double calcularImc = input.Input(input2, input3);
+  if (calculoImc < 16) {
+    print("Resultado de IMC: Magreza grave");
+  }
+  if (calculoImc >= 16 && calculoImc < 17) {
+    print("Resultado de IMC: Magreza moderada");
+  }
+  if (calculoImc >= 17 && calculoImc < 18.5) {
+    print("Resultado de IMC: Magreza leve");
+  }
+  if (calculoImc >= 18.5 && calculoImc < 25) {
+    print("Resultado de IMC: Saudavel");
+  }
+  if (calculoImc >= 25 && calculoImc < 30) {
+    print("Resultado de IMC: Sobrepeso");
+  }
+  if (calculoImc >= 30 && calculoImc < 35) {
+    print("Resultado de IMC: Obesidade Grau I");
+  }
+  if (calculoImc >= 35 && calculoImc < 40) {
+    print("Resultado de IMC: Obesidade Grau II (severa)");
+  }
+  if (calculoImc >= 40) {
+    print("Resultado de IMC: Obesidade Grau III (morbida)");
+  }
 }
